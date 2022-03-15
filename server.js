@@ -2,10 +2,10 @@ const express = require("express");
 
 const app = express();
 
-app.use(express.static("./dist/Front_Booking_Room"));
+app.use(express.static("./dist/"));
 
 app.get("/*", function (req, res) {
-  res.sendFile("index.html", { root: "dist/Front_Booking_Room" });
+  res.sendFile("index.html", { root: "dist/" });
 });
 
 app.listen(process.env.PORT || 8080);
