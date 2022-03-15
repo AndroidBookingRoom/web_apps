@@ -1,3 +1,15 @@
+.box{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../../assets/image/bgd_login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 a {
   color: #92badd;
   display:inline-block;
@@ -20,12 +32,6 @@ h2 {
 /* STRUCTURE */
 
 .wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
   padding: 20px;
 }
 
