@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {LoginComponent} from "./login/login.component";
 import {RouterModule, Routes} from "@angular/router";
 
-export const routes: Routes =[
+export const routes: Routes = [
   {
     path: '',
-    redirectTo:'auth',
-    pathMatch:'full'
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
-    path:'login',
+    path: 'login',
     component: LoginComponent
   }
 ]
@@ -23,4 +23,5 @@ export const routes: Routes =[
     RouterModule.forChild(routes)
   ]
 })
-export class AuthModule { }
+export class AuthModule {
+}
