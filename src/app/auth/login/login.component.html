@@ -9,14 +9,17 @@
       </div>
 
       <!-- Login Form -->
-      <form style="margin-top: 20px">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-        <input type="submit" class="fadeIn fourth" value="Log In">
+      <form style="margin-top: 20px" [formGroup]="loginForm" (ngSubmit)="Submit()">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="username" [(ngModel)]="username"
+               formControlName="username">
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
+               [(ngModel)]="password"
+               formControlName="password">
+        <input type="submit" class="fadeIn fourth" value="Log In" >
       </form>
 
       <!-- Remind Passowrd -->
-      <div id="formFooter">
+      <div id=" formFooter">
         <a class="underlineHover" href="#">Forgot Password?</a>
       </div>
 
