@@ -53,7 +53,6 @@ export class HotelDetailComponent implements OnInit {
         console.log(res.data)
         this.spinner.hide();
         this.ListHotel = res.data;
-        this.imgUrl = res.data.urlImg
         // this.hotelGuid = res.data.guid;
       }
     })

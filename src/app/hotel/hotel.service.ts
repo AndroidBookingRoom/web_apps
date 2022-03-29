@@ -9,6 +9,8 @@ import {parseArguments} from "@angular/cli/models/parser";
 })
 export class HotelService {
   API_URL = `${environment.URL}`;
+  API_URLDeploy = `${environment.URLDeploy}`;
+
 
   constructor(
     private http: HttpClient
@@ -40,17 +42,27 @@ export class HotelService {
     return formData;
   }
 
+  // getListHotel(): Observable<any> {
+  //   return this.http.get(this.API_URL + `api/hotel/getListHotel`, );
+  // }
   getListHotel(): Observable<any> {
-    return this.http.get(this.API_URL + `api/hotel/getListHotel`, );
+    return this.http.get(this.API_URLDeploy + `api/hotel/getListHotel`, );
   }
 
+  // deleteHotel(guid: any): Observable<any> {
+  //   return this.http.delete(this.API_URL + `api/hotel/deleteHotel`, {params: {"id": guid}});
+  // }
   deleteHotel(guid: any): Observable<any> {
-    return this.http.delete(this.API_URL + `api/hotel/deleteHotel`, {params: {"id": guid}});
+    return this.http.delete(this.API_URLDeploy + `api/hotel/deleteHotel`, {params: {"id": guid}});
   }
 
+  // addHotel(data: any): Observable<any> {
+  //   // @ts-ignore
+  //   return this.http.post(this.API_URL + `api/hotel/create-hotel`, this.convertFormFile(data));
+  // }
   addHotel(data: any): Observable<any> {
     // @ts-ignore
-    return this.http.post(this.API_URL + `api/hotel/create-hotel`, this.convertFormFile(data));
+    return this.http.post(this.API_URLDeploy + `api/hotel/create-hotel`, this.convertFormFile(data));
   }
 
 }
