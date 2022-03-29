@@ -14,12 +14,14 @@ export class HotelService {
     private http: HttpClient
   ) {
   }
-   convertFormFile(dataPost: any): FormData {
+
+  convertFormFile(dataPost: any): FormData {
     // const filteredData = CommonUtils.convertData(dataPost);
     const formData = this.objectToFormData(dataPost);
     return formData;
   }
-   objectToFormData(form :any): FormData {
+
+  objectToFormData(form: any): FormData {
     const formData = new FormData();
     for (const key of Object.keys(form)) {
       const value = form[key];
@@ -39,7 +41,7 @@ export class HotelService {
   }
 
   getListHotel(): Observable<any> {
-    return this.http.get(this.API_URL + `api/hotel/getListHotel`,);
+    return this.http.get(this.API_URL + `api/hotel/getListHotel`, );
   }
 
   deleteHotel(guid: any): Observable<any> {

@@ -12,9 +12,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CreateHotelComponent} from './hotel-detail/create-hotel/create-hotel.component';
 import {NgbActiveModal, NgbButtonsModule, NgbDatepickerModule, NgbModalModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgxSpinnerModule} from "ngx-spinner";
-import { DeleteHotelComponent } from './hotel-detail/delete-hotel/delete-hotel/delete-hotel.component';
+import {DeleteHotelComponent} from './hotel-detail/delete-hotel/delete-hotel/delete-hotel.component';
 import {FileUploadModule} from "primeng/fileupload";
 import {ButtonModule} from "primeng/button";
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 const routes: Routes = [
@@ -66,6 +67,7 @@ const routes: Routes = [
     FileUploadModule,
     NgbButtonsModule,
     ButtonModule,
+    MatPaginatorModule
 
 
     // NgbModalModule,

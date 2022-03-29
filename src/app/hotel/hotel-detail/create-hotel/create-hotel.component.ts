@@ -1,9 +1,11 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ModalDismissReasons, NgbActiveModal, NgbDateParserFormatter, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HotelService} from "../../hotel.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
+
+// import {log} from "util";
 
 @Component({
   selector: 'app-create-hotel',
@@ -20,6 +22,8 @@ export class CreateHotelComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
   }
+
+  @Input() saveHotelFormValue: any;
 
   closeResult = '';
 
@@ -41,6 +45,7 @@ export class CreateHotelComponent implements OnInit {
   //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   //   });
   // }
+
   get f() {
     return this.hotelForm.controls;
   }
@@ -52,6 +57,9 @@ export class CreateHotelComponent implements OnInit {
       multipartFile: [''],
     })
   }
+
+  // @ts-ignore
+
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -67,9 +75,10 @@ export class CreateHotelComponent implements OnInit {
     this.images = [];
   }
 
+
   onSelect(event: any) {
     for (const item of event.files) {
-      this.images.push(item);
+      this.images.push(item)
     }
   }
 
@@ -84,6 +93,8 @@ export class CreateHotelComponent implements OnInit {
     })
     this.spinner.show();
     this.service.addHotel(this.hotelForm.value).subscribe(res => {
+      this.saveHotelFormValue = this.hotelForm.value;
+      console.log(this.saveHotelFormValue)
       if (res.code == "success") {
         this.spinner.hide();
         this.toast.success(res.code)

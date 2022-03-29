@@ -5,6 +5,7 @@ import {HotelService} from "../hotel.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {DatePipe} from "@angular/common";
 import {DeleteHotelComponent} from "./delete-hotel/delete-hotel/delete-hotel.component";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 // import {CreateHotelDetailComponent} from "./create-hotel-detail/create-hotel-detail.component";
 
@@ -16,11 +17,15 @@ import {DeleteHotelComponent} from "./delete-hotel/delete-hotel/delete-hotel.com
 })
 export class HotelDetailComponent implements OnInit {
   hotelGuid: any;
+  // @ts-ignore
+  hotelDetailForm: FormGroup;
+  imgUrl: any;
 
   constructor(
     private modalService: NgbModal,
     private hotelService: HotelService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private fb: FormBuilder
   ) {
   }
 
@@ -28,16 +33,28 @@ export class HotelDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListHotel();
+    // this.initForm();
+  }
+
+  // initForm() {
+  //   this.hotelDetailForm = this.fb.group({
+  //     name: [null],
+  //   })
+  // }
+
+  get f() {
+    return this.hotelDetailForm.controls
   }
 
   getListHotel() {
     this.spinner.show();
     this.hotelService.getListHotel().subscribe(res => {
       if (res.code == "success") {
+        console.log(res.data)
         this.spinner.hide();
         this.ListHotel = res.data;
+        this.imgUrl = res.data.urlImg
         // this.hotelGuid = res.data.guid;
-        console.log(this.ListHotel)
       }
     })
   }
