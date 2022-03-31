@@ -1,16 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {HotelService} from "../../../hotel.service";
+import {HotelService} from "../../hotel.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
-  selector: 'app-delete-hotel',
-  templateUrl: './delete-hotel.component.html',
-  styleUrls: ['./delete-hotel.component.scss']
+  selector: 'app-delete-room',
+  templateUrl: './delete-room.component.html',
+  styleUrls: ['./delete-room.component.scss']
 })
-export class DeleteHotelComponent implements OnInit {
-  @Input() delHotelGuid: any;
+export class DeleteRoomComponent implements OnInit {
+  @Input() delRoomGuid: any;
 
   constructor(
     private modal: NgbActiveModal,
@@ -29,13 +29,14 @@ export class DeleteHotelComponent implements OnInit {
 
   processDelete() {
     this.spinner.show();
-    this.service.deleteHotel(this.delHotelGuid).subscribe(res => {
+    this.service.deleteRoom(this.delRoomGuid).subscribe(res => {
       if (res.code === 'success') {
         this.spinner.hide();
         this.toastr.success(
           "Success",);
         this.modal.close('success');
-      } else {
+      }
+      else {
         this.spinner.hide();
         this.toastr.error(res.code);
         this.modal.close('fail');

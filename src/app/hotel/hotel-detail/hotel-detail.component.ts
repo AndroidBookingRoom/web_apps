@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, ViewChild} from '@angular/core';
 import {CreateHotelComponent} from "./create-hotel/create-hotel.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {HotelService} from "../hotel.service";
@@ -6,6 +6,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {DatePipe} from "@angular/common";
 import {DeleteHotelComponent} from "./delete-hotel/delete-hotel/delete-hotel.component";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Paginator} from "primeng/paginator";
 
 // import {CreateHotelDetailComponent} from "./create-hotel-detail/create-hotel-detail.component";
 
@@ -19,13 +20,11 @@ export class HotelDetailComponent implements OnInit {
   hotelGuid: any;
   // @ts-ignore
   hotelDetailForm: FormGroup;
-  imgUrl: any;
-
   constructor(
     private modalService: NgbModal,
     private hotelService: HotelService,
     private spinner: NgxSpinnerService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
   }
 
@@ -45,6 +44,8 @@ export class HotelDetailComponent implements OnInit {
   get f() {
     return this.hotelDetailForm.controls
   }
+
+
 
   getListHotel() {
     this.spinner.show();

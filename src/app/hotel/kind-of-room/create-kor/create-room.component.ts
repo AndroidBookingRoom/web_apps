@@ -1,32 +1,20 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {ModalDismissReasons, NgbActiveModal, NgbDateParserFormatter, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ModalDismissReasons, NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {HotelService} from "../../hotel.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
 
-// import {log} from "util";
-
 @Component({
-  selector: 'app-create-hotel',
-  templateUrl: './create-hotel.component.html',
-  styleUrls: ['./create-hotel.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-create-room',
+  templateUrl: './create-room.component.html',
+  styleUrls: ['./create-room.component.scss']
 })
-export class CreateHotelComponent implements OnInit {
+export class CreateRoomComponent implements OnInit {
   isSaved: boolean = false;
   images: File[] = [];
   // @ts-ignore
-  hotelForm: FormGroup;
-
-  ngOnInit(): void {
-    this.initForm();
-  }
-
-
-  closeResult = '';
-
-
+  roomForm: FormGroup;
   constructor(
     private modalService: NgbModal,
     private fb: FormBuilder,
@@ -37,22 +25,17 @@ export class CreateHotelComponent implements OnInit {
   ) {
   }
 
-  // open(content:any) {
-  //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-  //     this.closeResult = `Closed with: ${result}`;
-  //   }, (reason) => {
-  //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //   });
-  // }
+  ngOnInit(): void {
+    this.initForm()
+  }
 
   get f() {
-    return this.hotelForm.controls;
+    return this.roomForm.controls;
   }
 
   initForm() {
-    this.hotelForm = this.fb.group({
+    this.roomForm = this.fb.group({
       name: [null, Validators.required],
-      address: [null],
       multipartFile: [''],
     })
   }
@@ -87,11 +70,11 @@ export class CreateHotelComponent implements OnInit {
 
   submit() {
     // let dataToCreateHotel = this.convertToCreateHotel();
-    this.hotelForm.patchValue({
+    this.roomForm.patchValue({
       multipartFile: this.images
     })
     this.spinner.show();
-    this.service.addHotel(this.hotelForm.value).subscribe(res => {
+    this.service.createRoom(this.roomForm.value).subscribe(res => {
       if (res.code == "success") {
         this.spinner.hide();
         this.toast.success(res.code)
@@ -102,12 +85,10 @@ export class CreateHotelComponent implements OnInit {
         this.close();
       }
     })
-    console.log(this.hotelForm.value)
   }
 
   processRemove(event: any) {
     const index = this.images.indexOf(event.file);
     this.images.splice(index, 1);
   }
-
 }

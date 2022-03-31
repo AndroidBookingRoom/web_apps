@@ -16,6 +16,8 @@ import {DeleteHotelComponent} from './hotel-detail/delete-hotel/delete-hotel/del
 import {FileUploadModule} from "primeng/fileupload";
 import {ButtonModule} from "primeng/button";
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { CreateRoomComponent } from './kind-of-room/create-kor/create-room.component';
+import { DeleteRoomComponent } from './kind-of-room/delete-kor/delete-room.component';
 
 
 const routes: Routes = [
@@ -55,6 +57,8 @@ const routes: Routes = [
     HomeComponent,
     CreateHotelComponent,
     DeleteHotelComponent,
+    CreateRoomComponent,
+    DeleteRoomComponent,
 
   ],
   imports: [
