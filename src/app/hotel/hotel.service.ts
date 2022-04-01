@@ -41,16 +41,24 @@ export class HotelService {
     }
     return formData;
   }
-
-  getListRoom(): Observable<any> {
+  getListRoom():Observable<any>{
+    return this.http.get(this.API_URL + 'api/room/get-all-room');
+  }
+  createRoom(data:any):Observable<any>{
+    return this.http.post(this.API_URL + 'api/room/create-room', this.convertFormFile(data));
+  }
+  deleteRoom(id:any):Observable<any>{
+    return this.http.delete(this.API_URL + 'api/room/delete-room', {params:{"id":id}});
+  }
+  getListKOR(): Observable<any> {
     return this.http.get(this.API_URL + 'api/kod/getAllKOD');
   }
 
-  createRoom(data: any): Observable<any> {
+  createKOR(data: any): Observable<any> {
     return this.http.post(this.API_URL + 'api/kod/createKOD', this.convertFormFile(data));
   }
 
-  deleteRoom(id: any): Observable<any> {
+  deleteKOR(id: any): Observable<any> {
     return this.http.delete(this.API_URL + 'api/kod/deleteKOD', {params: {"id": id}});
   }
 

@@ -15,9 +15,11 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import {DeleteHotelComponent} from './hotel-detail/delete-hotel/delete-hotel/delete-hotel.component';
 import {FileUploadModule} from "primeng/fileupload";
 import {ButtonModule} from "primeng/button";
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { CreateRoomComponent } from './kind-of-room/create-kor/create-room.component';
 import { DeleteRoomComponent } from './kind-of-room/delete-kor/delete-room.component';
+import { ActionCreateRoomComponent } from './room/action-create-room/action-create-room.component';
+import { ActionDeleteRoomComponent } from './room/action-delete-room/action-delete-room.component';
+import {DropdownModule} from "primeng/dropdown";
 
 
 const routes: Routes = [
@@ -59,6 +61,8 @@ const routes: Routes = [
     DeleteHotelComponent,
     CreateRoomComponent,
     DeleteRoomComponent,
+    ActionCreateRoomComponent,
+    ActionDeleteRoomComponent,
 
   ],
   imports: [
@@ -71,9 +75,7 @@ const routes: Routes = [
     FileUploadModule,
     NgbButtonsModule,
     ButtonModule,
-    MatPaginatorModule
-
-
+    DropdownModule
     // NgbModalModule,
     // NgbAc
   ],

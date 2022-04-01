@@ -5,11 +5,11 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
-  selector: 'app-delete-room',
-  templateUrl: './delete-room.component.html',
-  styleUrls: ['./delete-room.component.scss']
+  selector: 'app-action-delete-room',
+  templateUrl: './action-delete-room.component.html',
+  styleUrls: ['./action-delete-room.component.scss']
 })
-export class DeleteRoomComponent implements OnInit {
+export class ActionDeleteRoomComponent implements OnInit {
   @Input() delRoomGuid: any;
 
   constructor(
@@ -22,14 +22,13 @@ export class DeleteRoomComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   close() {
     this.modal.close();
   }
 
   processDelete() {
     this.spinner.show();
-    this.service.deleteKOR(this.delRoomGuid).subscribe(res => {
+    this.service.deleteRoom(this.delRoomGuid).subscribe(res => {
       if (res.code === 'success') {
         this.spinner.hide();
         this.toastr.success(
@@ -43,5 +42,4 @@ export class DeleteRoomComponent implements OnInit {
       }
     });
   }
-
 }

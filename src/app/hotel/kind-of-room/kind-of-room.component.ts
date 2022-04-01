@@ -23,12 +23,12 @@ export class KindOfRoomComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getListRoom();
+    this.getListKOR();
   }
 
-  getListRoom() {
+  getListKOR() {
     this.spinner.show();
-    this.hotelService.getListRoom().subscribe(res => {
+    this.hotelService.getListKOR().subscribe(res => {
       if (res.code == "success") {
         console.log(res.data)
         this.spinner.hide();
@@ -47,7 +47,7 @@ export class KindOfRoomComponent implements OnInit {
     });
     modalRef.componentInstance.delRoomGuid = guid;
     modalRef.result.then((result) => {
-      this.getListRoom();
+      this.getListKOR();
     }, (reason) => {
     });
 
@@ -61,7 +61,7 @@ export class KindOfRoomComponent implements OnInit {
       centered: true,
     });
     modalRef.result.then((result) => {
-      this.getListRoom();
+      this.getListKOR();
     }, (reason) => {
     });
   }

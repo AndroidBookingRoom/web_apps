@@ -13,8 +13,12 @@ import {ToastrService} from "ngx-toastr";
 export class CreateRoomComponent implements OnInit {
   isSaved: boolean = false;
   images: File[] = [];
+  ListKOR: any[] = [];
+  // @ts-ignore
+  ListHotel: any[] = [];
   // @ts-ignore
   roomForm: FormGroup;
+
   constructor(
     private modalService: NgbModal,
     private fb: FormBuilder,
@@ -26,7 +30,7 @@ export class CreateRoomComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
 
   get f() {
@@ -39,7 +43,6 @@ export class CreateRoomComponent implements OnInit {
       multipartFile: [''],
     })
   }
-
   // @ts-ignore
 
 
@@ -74,7 +77,7 @@ export class CreateRoomComponent implements OnInit {
       multipartFile: this.images
     })
     this.spinner.show();
-    this.service.createRoom(this.roomForm.value).subscribe(res => {
+    this.service.createKOR(this.roomForm.value).subscribe(res => {
       if (res.code == "success") {
         this.spinner.hide();
         this.toast.success(res.code)
