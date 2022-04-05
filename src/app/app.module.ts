@@ -15,6 +15,8 @@ import {AccordionModule} from "primeng/accordion";
 import {MenuItem} from 'primeng/api';
 import {ButtonModule} from "primeng/button";
 import {FileUploadModule} from "primeng/fileupload";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -31,14 +33,17 @@ import {FileUploadModule} from "primeng/fileupload";
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    FileUploadModule
-
+    FileUploadModule,
+    Ng2SearchPipeModule,
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: HttpConfigInterceptor,
     multi: true,
   },],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

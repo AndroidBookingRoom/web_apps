@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {CreateHotelComponent} from "./create-hotel/create-hotel.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {HotelService} from "../hotel.service";
@@ -17,9 +17,8 @@ import {Paginator} from "primeng/paginator";
   providers: [DatePipe]
 })
 export class HotelDetailComponent implements OnInit {
-  hotelGuid: any;
   // @ts-ignore
-  hotelDetailForm: FormGroup;
+
   constructor(
     private modalService: NgbModal,
     private hotelService: HotelService,
@@ -28,11 +27,14 @@ export class HotelDetailComponent implements OnInit {
   ) {
   }
 
-  ListHotel: any[] = [];
+  // @ts-ignore
+  searchForm: FormGroup;
+  searchText: any;
+  @Input() ListHotel: any[] = [];
 
   ngOnInit(): void {
-    this.getListHotel();
-    // this.initForm();
+    this.searchListHotel();
+    this.initForm();
   }
 
   // initForm() {
@@ -42,12 +44,16 @@ export class HotelDetailComponent implements OnInit {
   // }
 
   get f() {
-    return this.hotelDetailForm.controls
+    return this.searchForm.controls
   }
 
+  initForm() {
+    this.searchForm = this.fb.group({
+      name: ['']
+    })
+  }
 
-
-  getListHotel() {
+  searchListHotel() {
     this.spinner.show();
     this.hotelService.getListHotel().subscribe(res => {
       if (res.code == "success") {
@@ -68,7 +74,7 @@ export class HotelDetailComponent implements OnInit {
     });
     modalRef.componentInstance.delHotelGuid = guid;
     modalRef.result.then((result) => {
-      this.getListHotel();
+      this.searchListHotel();
     }, (reason) => {
     });
 
@@ -82,7 +88,7 @@ export class HotelDetailComponent implements OnInit {
       centered: true,
     });
     modalRef.result.then((result) => {
-      this.getListHotel();
+      this.searchListHotel();
     }, (reason) => {
     });
   }

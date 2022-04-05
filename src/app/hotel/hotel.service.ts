@@ -41,15 +41,29 @@ export class HotelService {
     }
     return formData;
   }
-  getListRoom():Observable<any>{
+
+  getListOptionHotel(): Observable<any> {
+    return this.http.get(this.API_URL + 'api/option-hotel/getAllOptionHotel');
+  }
+  createOptionHotel(data:any):Observable<any>{
+    return this.http.post(this.API_URL + 'api/option-hotel/createOptionHotel',data);
+  }
+  deleteOptionHotel(id:any):Observable<any>{
+    return this.http.delete(this.API_URL + 'api/option-hotel/deleteOptionHotel', {params:{"id":id}});
+
+  }
+  getListRoom(): Observable<any> {
     return this.http.get(this.API_URL + 'api/room/get-all-room');
   }
-  createRoom(data:any):Observable<any>{
+
+  createRoom(data: any): Observable<any> {
     return this.http.post(this.API_URL + 'api/room/create-room', this.convertFormFile(data));
   }
-  deleteRoom(id:any):Observable<any>{
-    return this.http.delete(this.API_URL + 'api/room/delete-room', {params:{"id":id}});
+
+  deleteRoom(id: any): Observable<any> {
+    return this.http.delete(this.API_URL + 'api/room/delete-room', {params: {"id": id}});
   }
+
   getListKOR(): Observable<any> {
     return this.http.get(this.API_URL + 'api/kod/getAllKOD');
   }
@@ -63,7 +77,7 @@ export class HotelService {
   }
 
   getListHotel(): Observable<any> {
-    return this.http.get(this.API_URL + `api/hotel/getListHotel`,);
+    return this.http.get(this.API_URL + `api/hotel/getListHotel`);
   }
 
   // getListHotel(): Observable<any> {

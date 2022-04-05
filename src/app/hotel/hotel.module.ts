@@ -20,6 +20,9 @@ import { DeleteRoomComponent } from './kind-of-room/delete-kor/delete-room.compo
 import { ActionCreateRoomComponent } from './room/action-create-room/action-create-room.component';
 import { ActionDeleteRoomComponent } from './room/action-delete-room/action-delete-room.component';
 import {DropdownModule} from "primeng/dropdown";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { ActionOptionHotelComponent } from './option-hotel/action-option-hotel/action-option-hotel.component';
+import { DeleteOptionHotelComponent } from './option-hotel/delete-option-hotel/delete-option-hotel.component';
 
 
 const routes: Routes = [
@@ -63,7 +66,8 @@ const routes: Routes = [
     DeleteRoomComponent,
     ActionCreateRoomComponent,
     ActionDeleteRoomComponent,
-
+    ActionOptionHotelComponent,
+    DeleteOptionHotelComponent,
   ],
   imports: [
     CommonModule,
@@ -75,7 +79,8 @@ const routes: Routes = [
     FileUploadModule,
     NgbButtonsModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    Ng2SearchPipeModule,
     // NgbModalModule,
     // NgbAc
   ],

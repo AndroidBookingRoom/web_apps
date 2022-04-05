@@ -18,7 +18,7 @@ export class ActionCreateRoomComponent implements OnInit {
   ListKOR: any[] = []
   // @ts-ignore
   roomForm: FormGroup;
-
+data:any;
   constructor(private modalService: NgbModal,
               private fb: FormBuilder,
               private service: HotelService,
@@ -32,7 +32,6 @@ export class ActionCreateRoomComponent implements OnInit {
     this.initForm();
     this.getListHotel();
     this.getListKOR()
-
   }
 
   getListHotel() {

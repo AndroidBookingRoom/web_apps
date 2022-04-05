@@ -1,7 +1,7 @@
 <div class="modal-header" style="z-index: 9999">
   <h4 class="modal-title" id="modal-basic-title">Create Room</h4>
 
-  <button type="button" class="btn-close" aria-label="Close" (click)="close()">X</button>
+  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
 </div>
 <div class="modal-body">
   <form [formGroup]="roomForm" (ngSubmit)="submit()">
@@ -64,7 +64,7 @@
     <div class="mb-3">
       <label for="price">Price</label>
       <div class="input-group">
-        <input type="text" class="form-control" id="price" formControlName="price">
+        <input type="number" class="form-control" id="price" formControlName="price">
       </div>
     </div>
     <div class="modal-footer">
