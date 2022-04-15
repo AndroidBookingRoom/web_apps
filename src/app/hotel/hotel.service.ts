@@ -9,7 +9,7 @@ import {parseArguments} from "@angular/cli/models/parser";
 })
 export class HotelService {
   API_URL = `${environment.URL}`;
-  API_URLDeploy = `${environment.URLDeploy}`;
+  // API_URLDeploy = `${environment.URLDeploy}`;
 
 
   constructor(
