@@ -1,0 +1,83 @@
+<div class="modal-header" style="z-index: 9999">
+  <h4 class="modal-title" id="modal-basic-title">Create Room</h4>
+
+  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="roomForm" (ngSubmit)="submit()">
+    <!--    Name-->
+    <!--    Address-->
+    <div class="mb-3">
+      <label for="hotelName">Hotel Name</label>
+      <div class="input-group">
+        <p-dropdown
+          [required]="true"
+          id="hotelName"
+          formControlName="guidHotel"
+          [styleClass]="'p-dropdown-custom'"
+          [autoDisplayFirst]="false"
+          [options]="ListHotel"
+          [optionValue]="'guid'"
+          optionLabel="name">
+        </p-dropdown>
+      </div>
+      <small *ngIf="f['guidHotel'].touched && f['guidHotel'].errors?.['required']"
+             class="text-danger">
+        Hotel name is required.
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="kindOfRoom">Kind of room</label>
+      <div class="input-group">
+        <p-dropdown
+          [required]="true"
+          id="kindOfRoom"
+          formControlName="guidKindOfRoom"
+          [styleClass]="'p-dropdown-custom'"
+          [autoDisplayFirst]="false"
+          [options]="ListKOR"
+          [optionValue]="'guid'"
+          optionLabel="name">
+        </p-dropdown>
+      </div>
+      <small *ngIf="f['guidKindOfRoom'].touched && f['guidKindOfRoom'].errors?.['required']"
+             class="text-danger">
+        Kind of room is required.
+      </small>
+    </div>
+    <div class="mb-3">
+      <label>Image</label>
+      <div class="input-group">
+        <p-fileUpload [multiple]="true"
+                      [showCancelButton]="true"
+                      [showUploadButton]="false"
+                      (onSelect)="onSelect($event)"
+                      (onRemove)="processRemove($event)"
+                      (onClear)="processClear()"
+                      cancelLabel="Cancel"
+                      chooseLabel="Choose"
+                      [fileLimit]="8"
+                      accept="image/*"
+        ></p-fileUpload>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="price">Price</label>
+      <div class="input-group">
+        <input type="number" class="form-control" id="price" formControlName="price">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark" [disabled]="roomForm.invalid">Save</button>
+    </div>
+  </form>
+
+</div>
+<!--</html>-->
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

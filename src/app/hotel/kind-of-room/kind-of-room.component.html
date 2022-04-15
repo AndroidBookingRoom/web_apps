@@ -1,0 +1,30 @@
+<button type="button" class="btn btn-primary" (click)="add()">Add</button>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Room Name</th>
+    <th scope="col">Created Date</th>
+    <th scope="col">Image</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let data of ListRoom; index as i ">
+  <tr>
+    <td>{{i}}</td>
+    <td>{{data.name}}</td>
+    <td>{{data.createdDate|  date: 'dd/MM/yyyy'}}</td>
+    <td><img class="images" [src]="data.urlImg" style="height: 100px; width: 100px"/></td>
+    <td>
+      <button type="button" class="btn btn-outline-danger" (click)="delete(data.guid)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

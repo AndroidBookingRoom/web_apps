@@ -1,5 +1,6 @@
 <div class="box">
   <div class="wrapper fadeInDown">
+
     <div id="formContent">
       <!-- Tabs Titles -->
 
@@ -9,14 +10,25 @@
       </div>
 
       <!-- Login Form -->
-      <form style="margin-top: 20px">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+      <form style="margin-top: 20px" [formGroup]="loginForm" (ngSubmit)="Submit()">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="username"
+               formControlName="username" required>
+        <small *ngIf="f['username'].errors?.['required'] && isSubmitted"
+               class="text-danger">
+          Username is required.
+        </small>
+
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
+               formControlName="password" required>
+        <p *ngIf="f['password'].errors?.['required']  && isSubmitted"
+               class="text-danger">
+          Password is required.
+        </p>
         <input type="submit" class="fadeIn fourth" value="Log In">
       </form>
 
       <!-- Remind Passowrd -->
-      <div id="formFooter">
+      <div id=" formFooter">
         <a class="underlineHover" href="#">Forgot Password?</a>
       </div>
 
@@ -24,3 +36,4 @@
   </div>
 
 </div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

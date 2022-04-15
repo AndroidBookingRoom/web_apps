@@ -1,0 +1,52 @@
+<div class="nav-bar" style="display:flex">
+  <button type="button" class="btn btn-primary" (click)="add()">Add</button>
+  <div class="input-group">
+    <div class="form-outline">
+      <input type="search" id="form1" class="form-control" [(ngModel)]="searchText" style="margin-left: 10px;" placeholder="Search"/>
+      <i class="fas fa-search"></i>
+    </div>
+    <!--    <button type="button" class="btn btn-primary" >-->
+    <!--      <i class="fas fa-search"></i>-->
+    <!--    </button>-->
+  </div>
+</div>
+
+<!--<div class="input-group">-->
+<!--  <div class="form-outline" [formGroup]="hotelDetailForm">-->
+<!--    <input type="search" id="form1" class="form-control" formControlName="name" />-->
+<!--    <label class="form-label" for="form1">Search</label>-->
+<!--  </div>-->
+<!--  <button type="button" class="btn btn-primary">-->
+<!--    <i class="fas fa-search"></i>-->
+<!--  </button>-->
+<!--</div>-->
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Created Date</th>
+    <th>Image</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of ListHotel | filter:searchText ; index as i ">
+    <td>{{i}}</td>
+    <td>{{data.name}}</td>
+    <td>{{data.address}}</td>
+    <td>{{data.createdDate | date: 'dd/MM/yyyy' }}</td>
+    <td><img class="images" [src]="data.urlImg" style="height: 100px; width: 100px"/></td>
+    <td>
+      <button type="button" class="btn btn-outline-danger" (click)="delete(data.guid)">Delete</button>
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+
